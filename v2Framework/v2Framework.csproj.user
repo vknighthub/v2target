@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Controls\v2TableLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\v2Transaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\v2Panel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\v2Button.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\v2DataView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\v2Textbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

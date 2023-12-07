@@ -1,0 +1,3 @@
+D:\V\v2Target\Build\v2Target.pdb
+D:\V\v2Target\Build\v2Framework.pdb
+D:\V\v2Target\Build\v2Target.exe

@@ -1,0 +1,81 @@
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using v2Framework.Models;
+
+namespace v2Framework.Uitls.Cardano
+{
+    public class CardanoAPI
+    {
+        string baseUrl;
+
+        public CardanoAPI(string baseUrl)
+        {
+            this.baseUrl = baseUrl;
+        }
+
+        public Response getNetworkInformation()
+        {
+            return RestAPI.GET(baseUrl + "/v2/network/information");
+        }
+
+        public Response getWalletbyID(string walletId)
+        {
+            return RestAPI.GET(baseUrl + "/v2/wallets/" + walletId);
+        }
+
+        public Response getListWallet()
+        {
+            return RestAPI.GET(baseUrl + "/v2/wallets");
+        }
+
+        public Response addWallet(string walletName, string password, string passphare)
+        {
+            string[] mpassphrase = passphare.Split(" ");
+            List<string> list = new List<string>();
+            for (int i = 0; i < mpassphrase.Length; i++)
+            {
+                list.Add(mpassphrase[i]);
+            }
+
+            Wallet prepare = new Wallet(walletName, list, password);
+
+            string request = JsonConvert.SerializeObject(prepare);
+
+            return RestAPI.POST(baseUrl + "/v2/wallets", request);
+        }
+
+        public Response getAddressListAsync(string walletId)
+        {
+            return RestAPI.GET(baseUrl + "/v2/wallets/" + walletId + "/addresses");
+        }
+
+        public Response Transfer(string walletid, string passphare, string adddress, double amount)
+        {
+            JObject request = new JObject();
+            request.Add("passphrase", passphare);
+            request.Add("withdrawal", "self");
+            JArray payments = new JArray();
+            BalanceItem balanceItem = new BalanceItem();
+            balanceItem.quantity = amount;
+            balanceItem.unit = "lovelace";
+            JObject payment = new JObject();
+            payment.Add("address", adddress);
+            payment.Add("amount", JObject.Parse(JsonConvert.SerializeObject(balanceItem)));
+            payments.Add(payment);
+            request.Add("payments", payments);
+
+            return RestAPI.POST(baseUrl + "/v2/wallets/" + walletid + "/transactions", request.ToString());
+        }
+
+        public Response GetListTransfer(string walletid, string transactionid)
+        {
+            return RestAPI.GET(baseUrl + "/v2/wallets/" + walletid + "/transactions/" + transactionid);
+        }
+    }
+}

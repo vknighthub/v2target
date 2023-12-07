@@ -1,0 +1,3 @@
+D:\v2Target\v2Target_new\v2Target\bin\Release\net5.0-windows\publish\win-x64\v2Target.pdb
+D:\v2Target\v2Target_new\v2Target\bin\Release\net5.0-windows\publish\win-x64\v2Framework.pdb
+D:\v2Target\v2Target_new\v2Target\bin\Release\net5.0-windows\publish\win-x64\v2Target.exe

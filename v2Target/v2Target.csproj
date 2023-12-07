@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>v2Target.Program</StartupObject>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="ConfigurationTrading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Configuration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddWallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SyncForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Update="View\TradingForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\Trading\Binance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\Trading\Summary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\Wallet\Binance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="View\Wallet\Summary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SyncForm - Copy.resx">
+      <DependentUpon>SyncForm.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\v2Framework\v2Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
